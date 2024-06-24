@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/calculator-microservice/node_modules
+/calculator-microservice/e-commerce/node_modules
 /.pnp
 .pnp.js
 .yarn/install-state.gz

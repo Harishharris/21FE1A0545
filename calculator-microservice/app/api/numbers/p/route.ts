@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import { changeWindowCurrState, changeWindowprevState, windowCurrState, windowPrevState } from "@/utils";
 
 export async function GET(req: Request) {
-    const URL = 'http://20.244.56.144/test/even'
+    const URL = 'http://20.244.56.144/test/primes'
+    
     const res  = await fetch(URL, {
         method: "GET",
         headers: {
@@ -10,11 +11,13 @@ export async function GET(req: Request) {
         },
         cache: 'no-store'
     })
+
     const data = await res.json();
-    console.log(data)
+
     if (!data.numbers) {
         return NextResponse.json("Error!");
     }
+    
     const average = data.numbers.reduce((a: number, b: number) => a + b) / data.numbers.length;
     changeWindowprevState(windowCurrState)
     changeWindowCurrState(data.numbers)
